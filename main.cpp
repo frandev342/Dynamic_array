@@ -26,5 +26,7 @@ int main() {
   cout << C << endl;
   // SObrecarga del operador de acceso a un valor de un índice
   cout << C[2] << endl;
+  C = A;
+  cout << C << endl;
   return 0;
 }

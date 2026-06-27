@@ -29,6 +29,7 @@ public:
   // Sobrecarga de operadores
   // Acceso y un valor de un índice
   int &operator[](int index);
+  DynIntArray &operator=(DynIntArray &other);
 };
 
 std::ostream &operator<<(std::ostream &os, DynIntArray &dynarr);
