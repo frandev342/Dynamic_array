@@ -25,6 +25,7 @@ public:
 
   // Métodos getters
   int getSize() const;
+  DynIntArray merge(const DynIntArray &other);
 
   // Sobrecarga de operadores
   // Acceso y un valor de un índice

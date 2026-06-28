@@ -72,6 +72,19 @@ void DynIntArray::insert(int pos, int val) {
   data = ndata;
 }
 
+// Implementación de Merge: Unir dos arreglos dinámicos
+DynIntArray DynIntArray::merge(const DynIntArray &other) {
+  int numbers[size + other.size], i;
+  for (i = 0; i < size; i++) {
+    numbers[i] = data[i];
+  }
+  for (i = 0; i < other.size; i++) {
+    numbers[size + i] = other.data[i];
+  }
+  DynIntArray newArr(numbers, size + other.size);
+  return newArr;
+}
+
 // Acceso y modificación de valores en los índices del arreglo dinámico
 int &DynIntArray::operator[](int index) {
   if (index < 0 || index > size) {

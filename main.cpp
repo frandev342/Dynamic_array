@@ -28,5 +28,15 @@ int main() {
   cout << C[2] << endl;
   C = A;
   cout << C << endl;
+
+  // Unir dos arreglos
+  int numbers2[] = {5, 3, 1};
+  DynIntArray D(numbers2, 3);
+  DynIntArray E = D.merge(B);
+  DynIntArray F = E.merge(B);
+  DynIntArray G = E.merge(E);
+  cout << E << endl;
+  cout << F << endl;
+  cout << G << endl;
   return 0;
 }
