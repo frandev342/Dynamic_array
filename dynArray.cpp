@@ -7,6 +7,11 @@ DynIntArray::DynIntArray() {
   this->data = new int[0];
 }
 
+DynIntArray::DynIntArray(int size) {
+  this->size = size;
+  this->data = new int[size];
+}
+
 DynIntArray::DynIntArray(const int arr[], int size) {
   this->size = size;
   this->data = new int[size];
@@ -85,7 +90,15 @@ DynIntArray DynIntArray::merge(const DynIntArray &other) {
   return newArr;
 }
 
-// Acceso y modificación de valores en los índices del arreglo dinámico
+// Versión constante para objetos constantes, permitirá solo lectura
+const int &DynIntArray::operator[](int index) const {
+  if (index < 0 || index > size) {
+    throw std::out_of_range("Index out of range");
+  }
+  return data[index];
+}
+
+// VErsión normal, permitirá lectura y escritura
 int &DynIntArray::operator[](int index) {
   if (index < 0 || index > size) {
     throw std::out_of_range("Index out of range");
@@ -93,9 +106,33 @@ int &DynIntArray::operator[](int index) {
   return data[index];
 }
 
+// Recién implemente el constructor por tamaño, así que recién empieza su uso
+DynIntArray DynIntArray::operator+(const DynIntArray &other) const {
+  if (size != other.size) {
+    throw std::invalid_argument("Arrays must have the same size to be added");
+  }
+  DynIntArray result(size);
+  for (int i = 0; i < size; i++) {
+    result[i] = data[i] + other[i];
+  }
+  return result;
+}
+
+// Sobrecarga del operador -
+DynIntArray DynIntArray::operator-(const DynIntArray &other) const {
+  if (size != other.size) {
+    throw std::invalid_argument("Arrays must have the same size to be added");
+  }
+  DynIntArray result(size);
+  for (int i = 0; i < size; i++) {
+    result[i] = data[i] - other[i];
+  }
+  return result;
+}
+
 // Recordar que no se debe usar const, porque estamos modificando el arreglo
 // dinámico
-std::ostream &operator<<(std::ostream &os, DynIntArray &dynArray) {
+std::ostream &operator<<(std::ostream &os, const DynIntArray &dynArray) {
   os << "{";
   for (int i = 0; i < dynArray.getSize(); i++) {
     os << dynArray[i];
@@ -106,7 +143,8 @@ std::ostream &operator<<(std::ostream &os, DynIntArray &dynArray) {
   return os;
 }
 
-DynIntArray &DynIntArray::operator=(DynIntArray &other) {
+// SObrecarga del operador de asignación
+DynIntArray &DynIntArray::operator=(const DynIntArray &other) {
   if (this == &other) {
     return *this;
   }

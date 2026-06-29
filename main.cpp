@@ -38,5 +38,27 @@ int main() {
   cout << E << endl;
   cout << F << endl;
   cout << G << endl;
+
+  cout << "------------------------" << endl;
+  // TEst de operadores
+  DynIntArray arr(5);
+  DynIntArray arr1(5);
+  for (int i = 0; i < 5; i++) {
+    arr[i] = i * 2;
+    arr1[i] = i * 3;
+  }
+
+  cout << arr << endl;
+  cout << arr1 << endl;
+  DynIntArray arr2 = arr + arr1;
+  cout << arr2 << endl;
+  arr2.insert(3, 1);
+  cout << arr2 << endl;
+  // Test de errpr en caso de intentar sumar dos arreglos de diferente tamaño
+  // cout << arr2 + arr << endl;
+  cout << arr - arr1 << endl;
+  arr2 = arr;
+  cout << arr2 << endl;
+
   return 0;
 }
