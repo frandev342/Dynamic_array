@@ -155,3 +155,65 @@ DynIntArray &DynIntArray::operator=(const DynIntArray &other) {
     data[i] = other.data[i];
   return *this;
 }
+
+bool operator==(const DynIntArray &a, const DynIntArray &b) {
+  if (a.getSize() != b.getSize())
+    return false;
+  for (int i = 0; i < a.getSize(); i++) {
+    if (a[i] != b[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+bool operator!=(const DynIntArray &a, const DynIntArray &b) {
+  if (a.getSize() != b.getSize())
+    return true;
+  for (int i = 0; i < a.getSize(); i++) {
+    if (a[i] != b[i]) {
+      return true;
+    }
+  }
+  return false;
+}
+bool operator>(const DynIntArray &a, const DynIntArray &b) {
+  if (a.getSize() != b.getSize())
+    return a.getSize() > b.getSize();
+  for (int i = 0; i < a.getSize(); i++) {
+    if (a[i] != b[i]) {
+      return a[i] > b[i];
+    }
+  }
+  return false;
+}
+bool operator>=(const DynIntArray &a, const DynIntArray &b) {
+  if (a.getSize() != b.getSize())
+    return a.getSize() > b.getSize();
+  for (int i = 0; i < a.getSize(); i++) {
+    if (a[i] != b[i]) {
+      return a.getSize() >= b.getSize();
+    }
+  }
+  return true;
+}
+bool operator<(const DynIntArray &a, const DynIntArray &b) {
+  if (a.getSize() != b.getSize())
+    return b.getSize() > a.getSize();
+  for (int i = 0; i < a.getSize(); i++) {
+    if (a[i] != b[i]) {
+      return b[i] > a[i];
+    }
+  }
+  return false;
+}
+bool operator<=(const DynIntArray &a, const DynIntArray &b) {
+  if (a.getSize() != b.getSize())
+    return b.getSize() > a.getSize();
+  for (int i = 0; i < a.getSize(); i++) {
+    if (a[i] != b[i]) {
+      return b.getSize() >= a.getSize();
+    }
+  }
+  return true;
+}

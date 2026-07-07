@@ -60,5 +60,16 @@ int main() {
   arr2 = arr;
   cout << arr2 << endl;
 
+  cout << "------------------------" << endl;
+  int arr_1[] = {1, 2, 3, 5};
+  int arr_2[] = {1, 2, 3, 5};
+  int arr_3[] = {1, 2, 3, 4};
+  DynIntArray ARR1(arr_1, 4);
+  DynIntArray ARR2(arr_2, 4);
+  DynIntArray ARR3(arr_3, 4);
+  bool verify = ARR1 == ARR3;
+  cout << "1==3: " << verify << endl;
+  verify = ARR1 >= ARR2;
+  cout << "1>=2: " << verify << endl;
   return 0;
 }

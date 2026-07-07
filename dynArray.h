@@ -29,6 +29,7 @@ public:
   // Acceso y un valor de un índice
   // Sobrecarga de [] para escribir y lectura, y otra para solamente lectura
   int &operator[](int index);
+  // Necesario para la sobrecarga del operador <<
   const int &operator[](int index) const;
   DynIntArray
   operator+(const DynIntArray &other) const; // SObrecarga del operador +
@@ -36,6 +37,13 @@ public:
   operator-(const DynIntArray &other) const; // Sobrecarga del operador -
   DynIntArray &operator=(const DynIntArray &other);
 };
+
+bool operator==(const DynIntArray &a, const DynIntArray &b);
+bool operator>(const DynIntArray &a, const DynIntArray &b);
+bool operator<(const DynIntArray &a, const DynIntArray &b);
+bool operator<=(const DynIntArray &a, const DynIntArray &b);
+bool operator>=(const DynIntArray &a, const DynIntArray &b);
+bool operator!=(const DynIntArray &a, const DynIntArray &b);
 
 std::ostream &operator<<(std::ostream &os, const DynIntArray &dynarr);
 
