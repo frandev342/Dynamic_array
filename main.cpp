@@ -71,5 +71,9 @@ int main() {
   cout << "1==3: " << verify << endl;
   verify = ARR1 >= ARR2;
   cout << "1>=2: " << verify << endl;
+
+  cout << "------------------------" << endl;
+  DynIntArray ARR4 = {1, 100, 3, 4};
+  cout << ARR4 << endl;
   return 0;
 }
