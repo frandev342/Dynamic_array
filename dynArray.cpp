@@ -1,4 +1,6 @@
 #include "dynArray.h"
+#include <cstddef>
+#include <initializer_list>
 #include <ostream>
 #include <stdexcept>
 
@@ -25,6 +27,17 @@ DynIntArray::DynIntArray(const DynIntArray &other) {
   this->data = new int[other.size];
   for (int i = 0; i < size; i++) {
     data[i] = other.data[i];
+  }
+}
+
+// Instanciar por arreglo
+DynIntArray::DynIntArray(std::initializer_list<int> arr) {
+  size = arr.size();
+  data = new int[size];
+  size_t i = 0;
+  for (const int &x : arr) {
+    data[i] = x;
+    i++;
   }
 }
 
