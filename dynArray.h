@@ -1,3 +1,4 @@
+#include <initializer_list>
 #include <iostream>
 #ifndef _DYNAMICARRAY_
 #define _DYNAMICARRAY_
@@ -14,6 +15,9 @@ public:
   // Evitamos que si intentamos crear una copia, usamos deepcopy
   // Para copiar los datos y no el puntero, que provocaría un doble free()
   DynIntArray(const DynIntArray &other);
+  // constructor por arreglo, inicializar el objeto por arreglo (por defecto
+  // enteros)
+  DynIntArray(std::initializer_list<int> arr);
   ~DynIntArray();
 
   // métodos
