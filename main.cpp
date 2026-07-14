@@ -1,10 +1,10 @@
 #include "dynArray.h"
 #include <iostream>
-#include <ostream>
 
 using namespace std;
 
 int main() {
+  // TEST INICIAL
   DynIntArray A;
   cout << A.getSize() << endl;
   int numbers[5] = {1, 2, 3, 4, 5};
@@ -29,7 +29,7 @@ int main() {
   C = A;
   cout << C << endl;
 
-  // Unir dos arreglos
+  // TEST DE MERGE
   int numbers2[] = {5, 3, 1};
   DynIntArray D(numbers2, 3);
   DynIntArray E = D.merge(B);
@@ -47,11 +47,12 @@ int main() {
     arr[i] = i * 2;
     arr1[i] = i * 3;
   }
-
   cout << arr << endl;
   cout << arr1 << endl;
   DynIntArray arr2 = arr + arr1;
   cout << arr2 << endl;
+
+  // TEST DE insert
   arr2.insert(3, 1);
   cout << arr2 << endl;
   // Test de errpr en caso de intentar sumar dos arreglos de diferente tamaño
@@ -60,6 +61,7 @@ int main() {
   arr2 = arr;
   cout << arr2 << endl;
 
+  // TEST DE OPERADORES DE COMPARACIÓN
   cout << "------------------------" << endl;
   int arr_1[] = {1, 2, 3, 5};
   int arr_2[] = {1, 2, 3, 5};
@@ -72,8 +74,22 @@ int main() {
   verify = ARR1 >= ARR2;
   cout << "1>=2: " << verify << endl;
 
+  // TEST DE initializer_list
   cout << "------------------------" << endl;
   DynIntArray ARR4 = {1, 100, 3, 4};
   cout << ARR4 << endl;
+
+  // TEST DE CONSTRUCTOR Y ASIGNACIÓN DE MOVIMIENTO
+  cout << "------------------------" << endl;
+  DynIntArray ARR5 = {1, 5, 10, 15};
+  DynIntArray ARR6 = std::move(ARR5);
+  cout << ARR5 << endl;
+  cout << ARR6 << endl;
+
+  DynIntArray ARR7 = {10, 20, 30, 40};
+  ARR7 = std::move(ARR6);
+  cout << ARR6 << endl;
+  cout << ARR7 << endl;
+
   return 0;
 }
