@@ -18,6 +18,7 @@ public:
   // constructor por arreglo, inicializar el objeto por arreglo (por defecto
   // enteros)
   DynIntArray(std::initializer_list<int> arr);
+  DynIntArray(DynIntArray &&other) noexcept;
   ~DynIntArray();
 
   // métodos
@@ -40,6 +41,8 @@ public:
   DynIntArray
   operator-(const DynIntArray &other) const; // Sobrecarga del operador -
   DynIntArray &operator=(const DynIntArray &other);
+  DynIntArray &
+  operator=(DynIntArray &&other) noexcept; // asignación de movimiento
 };
 
 bool operator==(const DynIntArray &a, const DynIntArray &b);
