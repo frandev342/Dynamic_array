@@ -1,7 +1,5 @@
 #include "dynArray.h"
-#include <cstddef>
 #include <initializer_list>
-#include <ostream>
 #include <stdexcept>
 
 DynIntArray::DynIntArray() {
@@ -39,6 +37,14 @@ DynIntArray::DynIntArray(std::initializer_list<int> arr) {
     data[i] = x;
     i++;
   }
+}
+
+// constructor por movimiento
+DynIntArray::DynIntArray(DynIntArray &&other) noexcept {
+  size = other.size;
+  data = other.data;
+  other.size = 0;
+  other.data = nullptr;
 }
 
 DynIntArray::~DynIntArray() { delete[] data; }
@@ -166,6 +172,16 @@ DynIntArray &DynIntArray::operator=(const DynIntArray &other) {
   data = new int[size];
   for (int i = 0; i < other.size; i++)
     data[i] = other.data[i];
+  return *this;
+}
+DynIntArray &DynIntArray::operator=(DynIntArray &&other) noexcept {
+  if (this == &other)
+    return *this;
+  delete[] data;
+  data = other.data;
+  size = other.size;
+  other.data = nullptr;
+  other.size = 0;
   return *this;
 }
 
